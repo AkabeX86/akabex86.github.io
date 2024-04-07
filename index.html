@@ -1,9 +1,10 @@
  <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <title>AkabeX86|Welcome</title>
 </head>
-<body>
+<body id="bdy">
 
 <h1>
 Greetings, this page is currently being built!
@@ -11,4 +12,67 @@ Greetings, this page is currently being built!
 <p>Future Projects will be shown here! ^-^</p>
 
 </body>
+<style> 
+    body{
+        font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+        resize: both;
+
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+    .text{
+        margin:200 100 10 100;
+        padding: 10;
+        color: #9b9b9b;
+        background: rgba(0, 0, 0, 0.8);
+        text-align: center;
+        border-radius: 50px;
+    }
+    a{
+        color: #0027ff;
+        text-decoration: none;
+    }
+    a:hover{
+        color: #000000;
+        text-decoration: none;
+    }
+    </style>
 </html>
+<script>
+    var max_brightness = 255;
+    var col_red = max_brightness;
+    var col_green = 0;
+    var col_blue = 0;      
+    function colorLoop(element_id){
+        if(col_red == max_brightness && col_green == 0 && col_blue < max_brightness){
+            col_blue++;
+        }
+        if(col_red > 0 && col_green == 0 && col_blue == max_brightness){
+            col_red--;
+        }
+        if(col_red == 0 && col_green < max_brightness && col_blue == max_brightness){
+            col_green++;
+        }
+        if(col_red == 0 && col_green == max_brightness && col_blue > 0){
+            col_blue--;
+        }
+        if(col_red < max_brightness && col_green == max_brightness && col_blue == 0){
+            col_red++;
+        }
+        if(col_red == max_brightness && col_green > 0 && col_blue == 0){
+            col_green--;
+        }
+        element_id.style.background = "rgb("+col_red+","+col_green+", "+col_blue+")";
+    }
+    
+    //MAIN CYCLE
+    var bg = document.getElementById('bdy');
+    
+    function mainCycle(){
+        
+        colorLoop(bg);
+    }
+    window.setInterval(mainCycle, 20);
+    
+</script>
